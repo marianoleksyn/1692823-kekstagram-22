@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Олексин Марьян](https://up.htmlacademy.ru/javascript/22/user/1692823).
-* Наставник: `Неизвестно`.
+* Наставник: [Макушкин Андрей](https://htmlacademy.ru/profile/andrei-makushkin).
 
 ---
 
