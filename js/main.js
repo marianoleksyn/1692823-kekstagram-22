@@ -24,7 +24,7 @@ const getRandomInteger = (min, max) => {
     return Error('The "max" number must be greater than "min" number');
   }
 
-  return Math.floor(Math.random() * (Math.ceil(max) - Math.ceil(min))) + Math.ceil(min);
+  return Math.floor(Math.random() * (Math.ceil(max) - Math.ceil(min) + 1)) + Math.ceil(min);
 };
 
 const checkMaxStringLength = (string, maxLength) => {
@@ -64,7 +64,7 @@ const setPostExample = (currentValue, index) => {
     comments: () => {
       return {
         id: getUniqueCommentId(),
-        avatar: `img/avatar-${getRandomInteger(1, 7)}.svg`,
+        avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
         message: COMMENTS[getRandomInteger(1, COMMENTS.length)],
         name: NAMES[getRandomInteger(1, NAMES.length)],
       }
