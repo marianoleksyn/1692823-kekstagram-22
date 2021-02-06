@@ -72,14 +72,14 @@ const setPostExample = (currentValue, index) => {
   };
 };
 
-// Generate posts
+// Generating posts
 const randomGeneratedPosts = new Array(POST_QUANTITY_GENERATE)
   .fill({})
   .map((currentValue, index) => {
     return setPostExample(currentValue, index)
   });
 
-// Generate random posts quantity for each post
+// Generating random comments for each post
 randomGeneratedPosts.forEach((post) => {
   post.comments = new Array(getRandomInteger(1, 4))
     .fill({})
