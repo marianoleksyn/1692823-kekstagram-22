@@ -1,5 +1,4 @@
-import { getRandomInteger } from './utils/get-random-integer.js'
-import { getArrayWithUniqueNumbers } from './utils/get-array-with-unique-numbers.js';
+import { getArrayWithUniqueNumbers, getRandomInteger } from './util.js'
 
 const POST_QUANTITY_GENERATE = 25;
 const COMMENTS = [
