@@ -1,6 +1,6 @@
 import { getArrayWithUniqueNumbers, getRandomInteger } from './util.js'
 
-const POST_QUANTITY_GENERATE = 25;
+const PICTURE_QUANTITY_GENERATE = 25;
 const COMMENTS = [
   'Всё отлично!', 'В целом всё неплохо. Но не всё.',
   'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
@@ -23,12 +23,12 @@ const getUniqueCommentId = () => {
   return current;
 };
 
-const createPostIds = getArrayWithUniqueNumbers(POST_QUANTITY_GENERATE);
-const createPostUrls = getArrayWithUniqueNumbers(POST_QUANTITY_GENERATE);
-const setPostExample = (currentValue, index) => {
+const createPictureIds = getArrayWithUniqueNumbers(PICTURE_QUANTITY_GENERATE);
+const createPictureUrls = getArrayWithUniqueNumbers(PICTURE_QUANTITY_GENERATE);
+const setPictureExample = (currentValue, index) => {
   return {
-    id: createPostIds[index],
-    url: `photos-${createPostUrls[index]}.jpg`,
+    id: createPictureIds[index],
+    url: `photos/${createPictureUrls[index]}.jpg`,
     description: `Описание к фотографии #${index + 1}`,
     likes: getRandomInteger(15, 100),
     comments: () => {
@@ -42,18 +42,18 @@ const setPostExample = (currentValue, index) => {
   };
 };
 
-// Generating posts
-const randomGeneratedPosts = new Array(POST_QUANTITY_GENERATE)
+// Generating pictures
+const randomGeneratedPictures = new Array(PICTURE_QUANTITY_GENERATE)
   .fill({})
   .map((currentValue, index) => {
-    return setPostExample(currentValue, index)
+    return setPictureExample(currentValue, index)
   });
 
-// Generating random comments for each post
-randomGeneratedPosts.forEach((post) => {
-  post.comments = new Array(getRandomInteger(1, 4))
+// Generating random comments for each picture
+randomGeneratedPictures.forEach((picture) => {
+  picture.comments = new Array(getRandomInteger(1, 4))
     .fill({})
-    .map(() => setPostExample().comments());
+    .map(() => setPictureExample().comments());
 });
 
-export { randomGeneratedPosts };
+export { randomGeneratedPictures };

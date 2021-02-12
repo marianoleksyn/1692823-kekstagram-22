@@ -6,7 +6,7 @@ const getArrayWithUniqueNumbers = (quantity) => {
   const numbers = [];
 
   while (numbers.length < quantity) {
-    const currentRandomInteger = getRandomInteger(1, quantity + 1);
+    const currentRandomInteger = getRandomInteger(1, quantity);
     if (!numbers.includes(currentRandomInteger)) {
       numbers.push(currentRandomInteger);
     }
