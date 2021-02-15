@@ -6,7 +6,7 @@ const getArrayWithUniqueNumbers = (quantity) => {
   const numbers = [];
 
   while (numbers.length < quantity) {
-    const currentRandomInteger = getRandomInteger(1, quantity + 1);
+    const currentRandomInteger = getRandomInteger(1, quantity);
     if (!numbers.includes(currentRandomInteger)) {
       numbers.push(currentRandomInteger);
     }
@@ -26,4 +26,4 @@ const getRandomInteger = (min, max) => {
   return Math.floor(Math.random() * (Math.ceil(max) - Math.ceil(min) + 1)) + Math.ceil(min);
 };
 
-export { checkMaxStringLength, getArrayWithUniqueNumbers, getRandomInteger };
+export {checkMaxStringLength, getArrayWithUniqueNumbers, getRandomInteger};
