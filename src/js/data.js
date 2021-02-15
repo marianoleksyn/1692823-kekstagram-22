@@ -24,8 +24,8 @@ const generateData = (quantity, minComments = 2, maxComments = 4) => {
         return {
           id: getUniqueCommentId(),
           avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
-          message: COMMENTS[getRandomInteger(1, COMMENTS.length)],
-          name: NAMES[getRandomInteger(1, NAMES.length)],
+          message: COMMENTS[getRandomInteger(1, COMMENTS.length - 1)],
+          name: NAMES[getRandomInteger(1, NAMES.length - 1)],
         }
       },
     };
