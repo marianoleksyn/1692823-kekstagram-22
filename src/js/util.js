@@ -26,4 +26,4 @@ const getRandomInteger = (min, max) => {
   return Math.floor(Math.random() * (Math.ceil(max) - Math.ceil(min) + 1)) + Math.ceil(min);
 };
 
-export { checkMaxStringLength, getArrayWithUniqueNumbers, getRandomInteger };
+export {checkMaxStringLength, getArrayWithUniqueNumbers, getRandomInteger};
