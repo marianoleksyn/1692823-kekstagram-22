@@ -4,6 +4,8 @@ const pictureScale = (imagePreview) => {
   const scaleReduceButton = document.querySelector('.scale__control--smaller');
   const scaleInputValue = document.querySelector('.scale__control--value');
 
+  imagePreview.style.transform = '';
+
   let scaleValue = 100;
   scaleInputValue.value = scaleValue + '%';
 
