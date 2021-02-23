@@ -1416,3 +1416,18 @@ main {
 .hidden {
   display: none;
 }
+
+.not-valid {
+  outline: 2px solid #ff3f3f;
+}
+
+.error-msg {
+  color: #ff3f3f;
+  text-align: left;
+}
+
+.text__description + .error-msg {
+  width: 450px;
+  margin: 0 auto;
+  text-transform: initial;
+}
