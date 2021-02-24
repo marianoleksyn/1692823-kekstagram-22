@@ -9,7 +9,7 @@ const hashtagValidation = (hashtagInput) => {
     hashtagInput.value = hashtagInput.value
       .replace('  ', ' ');
 
-    const hashtags = hashtagInput.value.split(' ').filter(function(item) {
+    const hashtags = hashtagInput.value.toLowerCase().split(' ').filter(function(item) {
       return item !== ''
     });
 
@@ -18,6 +18,8 @@ const hashtagValidation = (hashtagInput) => {
     checkFirstSymbol(hashtagInput, hashtags);
     checkEmptyHashtag(hashtagInput);
     checkSpecialChar(hashtagInput, hashtags);
+    checkIfDuplicateExists(hashtagInput, hashtags);
+
   });
 };
 
@@ -62,7 +64,7 @@ const checkHashtagLength = (hashtagInput, hashtags) => {
     'isToMuchHashtagLength',
     isToMuchHashtagLength,
     hashtagInput,
-    'Максимальна допустима длинна хэш-тега: 5 символов.',
+    `Максимальна допустима длинна хэш-тега: ${HASHTAG_MAX_LENGTH} символов.`,
   );
 };
 
@@ -86,10 +88,8 @@ const checkSpecialChar = (hashtagInput, hashtags) => {
 
   let hasSpecialChar = false;
   for(let i = 0; i < hashtags.length; i++) {
-    console.log(hashtags[i]);
 
     for(let j = 1; j < hashtags[i].length; j++) {
-      console.log(hashtags[i][j]);
       if (!/^[0-9A-Za-z]+$/.test(hashtags[i][j])) {
         hasSpecialChar = true;
         break;
@@ -101,7 +101,18 @@ const checkSpecialChar = (hashtagInput, hashtags) => {
     'hasSpecialChar',
     hasSpecialChar,
     hashtagInput,
-    'Строка после решётки должна состоять из букв или чисел и не может содержать спецсимволы (#, @, $ и т. п.),',
+    'Строка после решётки должна состоять из букв или чисел и не может содержать спецсимволы (#, @, $ и т. п.).',
+  );
+};
+
+const checkIfDuplicateExists = (hashtagInput, hashtags) => {
+  const duplicateInclude = new Set(hashtags).size !== hashtags.length;
+
+  displayValidationMsg(
+    'checkIfDuplicate',
+    duplicateInclude,
+    hashtagInput,
+    'Один и тот же хэш-тег не может быть использован дважды.',
   );
 };
 
