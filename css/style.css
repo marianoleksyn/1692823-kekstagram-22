@@ -1416,3 +1416,26 @@ main {
 .hidden {
   display: none;
 }
+
+.not-valid {
+  outline: 2px solid #ff3f3f;
+}
+
+[class*='error-msg'] {
+  color: #ff3f3f;
+  text-align: left;
+}
+
+.img-upload__form [class*='error-msg'] {
+  width: 450px;
+  margin: 0 auto;
+  text-transform: initial;
+}
+
+.text__hashtags + [class*='error-msg'] {
+  margin: -15px auto 0;
+}
+
+[class*='error-msg'] + .text__description {
+  margin-top: 20px;
+}

@@ -12,7 +12,7 @@ const pictureFilter = (imgPreview) => {
   const effectRadioInput = document.querySelectorAll('.effects__radio');
   const sliderWrapper = document.querySelector('.effect-level');
   const slider = sliderWrapper.querySelector('.effect-level__slider');
-  const effectLevelValue = document.querySelector('.effect-level');
+  const effectLevelValue = document.querySelector('.effect-level__value');
 
   // Init noUiSlider
   if (slider.innerHTML === '') {
