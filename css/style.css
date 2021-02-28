@@ -382,7 +382,7 @@ main {
   width: 100%;
   height: 100%;
 
-  padding-top: 60px;
+  padding: 60px 0;
   overflow: auto;
 
   background-color: rgba(0, 0, 0, 0.8);
@@ -622,7 +622,7 @@ main {
   font-size: 0;
 
   background-color: #314359;
-  background-image: url("../img/upload-default-image.jpg");
+  background-image: url("../img/upload-default-image.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% auto;
@@ -1227,7 +1227,6 @@ main {
   width: 600px;
   padding: 50px 20px;
   padding-top: 150px;
-  margin-top: 200px;
 
   display: flex;
   flex-direction: column;
@@ -1242,6 +1241,18 @@ main {
 
   background-color: #3c3614;
   border-radius: 10px;
+
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.success__overlay,
+.error__overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .success__inner {
@@ -1438,4 +1449,16 @@ main {
 
 [class*='error-msg'] + .text__description {
   margin-top: 20px;
+}
+
+.error-msg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #ff3f3f;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  z-index: 2;
 }

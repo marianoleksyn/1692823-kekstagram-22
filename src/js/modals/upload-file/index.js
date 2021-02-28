@@ -3,8 +3,9 @@ import {openModal, closeModal} from '../../helpers/display-modal.js';
 import {pictureScale} from './picture-scale.js'
 import {pictureFilter} from './picture-filter.js'
 import {uploadImageFile} from './upload-image-file.js';
-import {commentValidation} from './comment-validation.js';
-import {hashtagValidation} from './hashtags-validation.js';
+import {commentValidation} from './validation/comment.js';
+import {hashtagValidation} from './validation/hashtags.js';
+import {setUploadFileFormSubmit} from './set-upload-file-form-submit.js';
 
 const uploadFileInput = document.querySelector('#upload-file');
 const uploadOverlay = document.querySelector('.img-upload__overlay');
@@ -56,5 +57,7 @@ const closeUploadModalByEscape = (evt) => {
     closeUploadModal();
   }
 };
+
+setUploadFileFormSubmit(closeUploadModal, closeUploadModal);
 
 export {uploadFile};

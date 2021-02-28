@@ -1,5 +1,5 @@
-import {checkMaxStringLength} from '../../helpers/util.js';
-import {displayValidationMsg} from '../../helpers/display-validation-msg';
+import {checkMaxStringLength} from '../../../helpers/util.js';
+import {displayValidationMsg} from '../../../helpers/display-validation-msg';
 
 const TEXTAREA_MAX_LENGTH = 140;
 
