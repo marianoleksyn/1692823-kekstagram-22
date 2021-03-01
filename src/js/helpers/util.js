@@ -1,3 +1,5 @@
+const GET_DATA_ERROR_SHOW_TIME = 7000;
+
 const checkMaxStringLength = (string, maxLength) => {
   return string.length <= maxLength;
 };
@@ -26,4 +28,16 @@ const getRandomInteger = (min, max) => {
   return Math.floor(Math.random() * (Math.ceil(max) - Math.ceil(min) + 1)) + Math.ceil(min);
 };
 
-export {checkMaxStringLength, getArrayWithUniqueNumbers, getRandomInteger};
+const renderGetDataError = () => {
+  const errorMsg = document.createElement('div');
+  errorMsg.classList.add('error-msg');
+  errorMsg.innerHTML = 'Ошибка с загрузкой данных. Подождите и перезагрузите страницу.';
+
+  document.body.append(errorMsg);
+
+  setTimeout(() => {
+    errorMsg.remove();
+  }, GET_DATA_ERROR_SHOW_TIME);
+};
+
+export {checkMaxStringLength, getArrayWithUniqueNumbers, getRandomInteger, renderGetDataError};

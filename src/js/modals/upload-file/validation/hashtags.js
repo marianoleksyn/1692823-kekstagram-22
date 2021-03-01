@@ -1,4 +1,4 @@
-import {displayValidationMsg} from '../../helpers/display-validation-msg';
+import {displayValidationMsg} from '../../../helpers/display-validation-msg';
 
 const HASHTAGS_QUANTITY = 5;
 const HASHTAG_MAX_LENGTH = 20;

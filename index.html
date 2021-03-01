@@ -53,7 +53,7 @@
 
                   <!-- Предварительный просмотр изображения -->
                   <div class="img-upload__preview">
-                    <img src="img/upload-default-image.jpg" alt="Предварительный просмотр фотографии">
+                    <img src="img/upload-default-image.png" alt="Предварительный просмотр фотографии">
                   </div>
 
                   <!-- Изменение глубины эффекта, накладываемого на изображение -->
@@ -208,6 +208,7 @@
   <!-- Сообщение с ошибкой загрузки изображения -->
   <template id="error">
     <section class="error">
+      <div class="error__overlay"></div>
       <div class="error__inner">
         <h2 class="error__title">Ошибка загрузки файла</h2>
         <button type="button" class="error__button">Загрузить другой файл</button>
@@ -218,6 +219,7 @@
   <!-- Сообщение об успешной загрузке изображения -->
   <template id="success">
     <section class="success">
+      <div class="success__overlay"></div>
       <div class="success__inner">
         <h2 class="success__title">Изображение успешно загружено</h2>
         <button type="button" class="success__button">Круто!</button>
