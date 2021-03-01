@@ -1,5 +1,6 @@
 import {KEY_CODE_ESC} from '../../constants.js';
 import {openModal, closeModal} from '../../helpers/display-modal.js';
+import {resetValidation} from '../../helpers/display-validation-msg.js';
 import {pictureScale} from './picture-scale.js'
 import {pictureFilter} from './picture-filter.js'
 import {uploadImageFile} from './upload-image-file.js';
@@ -38,6 +39,7 @@ const openUploadModal = () => {
 
 const closeUploadModal = () => {
   closeModal(uploadOverlay);
+  resetValidation();
 
   closeUploadModalButton.removeEventListener('click', closeUploadModal);
   document.removeEventListener('keydown', closeUploadModalByEscape);

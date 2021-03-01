@@ -25,4 +25,13 @@ const displayValidationMsg = (validationName, condition, element, msg) => {
 
 };
 
-export {displayValidationMsg};
+const resetValidation = () => {
+  const allValidationFields = document.querySelectorAll('.not-valid');
+
+  for (let item of allValidationFields) {
+    item.classList.remove('not-valid');
+    item.nextElementSibling.remove();
+  }
+};
+
+export {displayValidationMsg, resetValidation};
