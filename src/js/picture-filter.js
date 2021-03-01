@@ -3,6 +3,7 @@ import {getArrayWithUniqueNumbers} from './helpers/util.js';
 
 const SORT_BY_RANDOM_PICTURES_QUANTITY = 10;
 const THROTTLE_TIME = 500;
+const FILTER_BUTTON_ACTIVE_CLASS = 'img-filters__button--active';
 
 const pictureFilter = (pictures) => {
   const imgFilters = document.querySelector('.img-filters');
@@ -17,6 +18,8 @@ const pictureFilter = (pictures) => {
   const sortByDefault = () => {
     clearPictures();
     renderPictures(renderedPicturesByDefaultCopy);
+    clearActiveFilter();
+    filterDefault.classList.add(FILTER_BUTTON_ACTIVE_CLASS);
   };
 
   const sortByRandom = () => {
@@ -32,6 +35,8 @@ const pictureFilter = (pictures) => {
 
     clearPictures();
     renderPictures(sortRandomPictures);
+    clearActiveFilter();
+    filterRandom.classList.add(FILTER_BUTTON_ACTIVE_CLASS);
   };
 
   const sortByDiscussed = () => {
@@ -43,6 +48,8 @@ const pictureFilter = (pictures) => {
 
     clearPictures();
     renderPictures(sortByCommentsPictures);
+    clearActiveFilter();
+    filterDiscussed.classList.add(FILTER_BUTTON_ACTIVE_CLASS);
   };
 
   // eslint-disable-next-line no-undef
@@ -56,6 +63,13 @@ const pictureFilter = (pictures) => {
     const allPicturesList = document.querySelectorAll('.picture');
     for (let picture of allPicturesList) {
       picture.remove();
+    }
+  };
+
+  const clearActiveFilter = () => {
+    const imgFilters = document.querySelectorAll('.img-filters__button');
+    for(let button of imgFilters) {
+      button.classList.remove(FILTER_BUTTON_ACTIVE_CLASS)
     }
   };
 
