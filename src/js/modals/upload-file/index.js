@@ -45,7 +45,7 @@ const closeUploadModal = () => {
   document.removeEventListener('keydown', closeUploadModalByEscape);
 };
 
-for(let i = 0; i < elementsBlockingEsc.length; i++) {
+for (let i = 0; i < elementsBlockingEsc.length; i++) {
   elementsBlockingEsc[i].addEventListener('focus', function () {
     document.removeEventListener('keydown', closeUploadModalByEscape);
   });

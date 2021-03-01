@@ -1,8 +1,8 @@
 import {renderPictures} from './picture-template.js';
-import {getArrayWithUniqueNumbers} from './helpers/util.js'
+import {getArrayWithUniqueNumbers} from './helpers/util.js';
 
 const SORT_BY_RANDOM_PICTURES_QUANTITY = 10;
-const SORT_THROTTLE_TIME = 500;
+const THROTTLE_TIME = 500;
 
 const pictureFilter = (pictures) => {
   const imgFilters = document.querySelector('.img-filters');
@@ -23,8 +23,8 @@ const pictureFilter = (pictures) => {
     const sortRandomPictures = [];
     const uniqueNumbersArray = getArrayWithUniqueNumbers(pictures.length);
 
-    for(let i = 0; i < uniqueNumbersArray.length; i++) {
-      if(i < SORT_BY_RANDOM_PICTURES_QUANTITY) {
+    for (let i = 0; i < uniqueNumbersArray.length; i++) {
+      if (i < SORT_BY_RANDOM_PICTURES_QUANTITY) {
         let current = uniqueNumbersArray[i] - 1;
         sortRandomPictures.push(renderedPicturesByDefaultCopy[current])
       }
@@ -46,7 +46,7 @@ const pictureFilter = (pictures) => {
   };
 
   // eslint-disable-next-line no-undef
-  const sortByRandomThrottle = _.throttle(sortByRandom, SORT_THROTTLE_TIME);
+  const sortByRandomThrottle = _.throttle(sortByRandom, THROTTLE_TIME);
 
   filterDefault.addEventListener('click', sortByDefault);
   filterRandom.addEventListener('click', sortByRandomThrottle);

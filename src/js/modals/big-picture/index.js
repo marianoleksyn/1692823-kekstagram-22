@@ -47,7 +47,7 @@ const renderBigPicture = (data) => {
   };
 
   const closeBigPictureModalByEscape = (evt) => {
-    if(evt.keyCode === KEY_CODE_ESC) {
+    if (evt.keyCode === KEY_CODE_ESC) {
       closeBigPictureModal();
     }
   };

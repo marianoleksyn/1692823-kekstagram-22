@@ -24,7 +24,7 @@ const closeSuccessPopup = () => {
 };
 
 const closeSuccessPopupByEscape = (evt) => {
-  if(evt.keyCode === KEY_CODE_ESC) {
+  if (evt.keyCode === KEY_CODE_ESC) {
     closeSuccessPopup();
   }
 };
@@ -51,7 +51,7 @@ const closeErrorPopup = () => {
 };
 
 const closeErrorPopupByEscape = (evt) => {
-  if(evt.keyCode === KEY_CODE_ESC) {
+  if (evt.keyCode === KEY_CODE_ESC) {
     closeErrorPopup();
   }
 };
