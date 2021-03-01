@@ -26,10 +26,10 @@ const displayValidationMsg = (validationName, condition, element, msg) => {
 };
 
 const resetValidation = () => {
-  const allValidationFields = document.querySelectorAll('.not-valid');
+  const allValidationFields = document.querySelectorAll(`.${NOT_VALID_CLASS}`);
 
   for (let item of allValidationFields) {
-    item.classList.remove('not-valid');
+    item.classList.remove(NOT_VALID_CLASS);
     item.nextElementSibling.remove();
   }
 };
