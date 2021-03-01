@@ -29,8 +29,6 @@ const renderBigPicture = (data) => {
     // temporary code
     const bigPictureCommentCount = bigPicture.querySelector('.social__comment-count');
     bigPictureCommentCount.classList.add('hidden');
-    const bigPictureCommentsLoader = bigPicture.querySelector('.comments-loader');
-    bigPictureCommentsLoader.classList.add('hidden');
     //
 
     closeBigPictureModalButton.addEventListener('click', closeBigPictureModal);
