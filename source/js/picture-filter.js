@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import {renderPictures} from './picture-template.js';
 import {getArrayWithUniqueNumbers} from './helpers/util.js';
 

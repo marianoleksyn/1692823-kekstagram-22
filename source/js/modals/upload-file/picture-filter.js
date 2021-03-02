@@ -1,4 +1,6 @@
-import {HIDDEN_CLASS} from '../../constants.js'
+import noUiSlider from 'nouislider';
+import 'nouislider/distribute/nouislider.css';
+import {HIDDEN_CLASS} from '../../constants.js';
 
 const pictureFilter = (imgPreview) => {
 
