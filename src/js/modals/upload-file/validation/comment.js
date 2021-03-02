@@ -15,7 +15,6 @@ const commentValidation = (commentTextarea) => {
     );
 
   });
-
 };
 
 export {commentValidation};

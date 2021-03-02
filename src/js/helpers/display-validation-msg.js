@@ -5,11 +5,11 @@ const DISABLED_BTN_ATTR = 'disabled';
 const displayValidationMsg = (validationName, condition, element, msg) => {
 
   const formSubmitButton = element.closest('form').querySelector('button[type="submit"]');
-  const currentvalidationClass = `${ERROR_MSG_CLASS}--${validationName}`;
+  const currentValidationClass = `${ERROR_MSG_CLASS}--${validationName}`;
 
-  const errorMsg = document.querySelector(`.${currentvalidationClass}`);
+  const errorMsg = document.querySelector(`.${currentValidationClass}`);
 
-  if(errorMsg) {
+  if (errorMsg) {
     errorMsg.remove();
 
     element.classList.remove(NOT_VALID_CLASS);
@@ -20,16 +20,16 @@ const displayValidationMsg = (validationName, condition, element, msg) => {
     element.classList.add(NOT_VALID_CLASS);
     formSubmitButton.setAttribute(DISABLED_BTN_ATTR, '');
 
-    element.insertAdjacentHTML('afterend', `<div class="${currentvalidationClass}">${msg}</div>`);
+    element.insertAdjacentHTML('afterend', `<div class="${currentValidationClass}">${msg}</div>`);
   }
 
 };
 
 const resetValidation = () => {
-  const allValidationFields = document.querySelectorAll('.not-valid');
+  const allValidationFields = document.querySelectorAll(`.${NOT_VALID_CLASS}`);
 
   for (let item of allValidationFields) {
-    item.classList.remove('not-valid');
+    item.classList.remove(NOT_VALID_CLASS);
     item.nextElementSibling.remove();
   }
 };
