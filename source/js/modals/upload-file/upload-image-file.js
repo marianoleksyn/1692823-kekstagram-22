@@ -1,16 +1,23 @@
 const uploadImageFile = (input, imagePreview, effectPreview) => {
-  const file = input.files;
-  if (input.files.length > 0) {
-    const fileReader = new FileReader();
+  const FILE_TYPES = ['jpg', 'jpeg', 'png'];
+  const file = input.files[0];
+  const fileName = file.name.toLowerCase();
 
-    fileReader.onload = function (event) {
-      imagePreview.src = event.target.result;
-      for (let i = 0; i < effectPreview.length; i++) {
-        effectPreview[i].style.backgroundImage = `url(${event.target.result})`;
+  const matches = FILE_TYPES.some((it) => {
+    return fileName.endsWith(it);
+  });
+
+  if (matches) {
+    const reader = new FileReader();
+
+    reader.addEventListener('load', () => {
+      imagePreview.src = reader.result;
+      for (let preview of effectPreview) {
+        preview.style.backgroundImage = `url(${reader.result})`;
       }
-    };
+    });
 
-    fileReader.readAsDataURL(file[0]);
+    reader.readAsDataURL(file);
   }
 };
 
