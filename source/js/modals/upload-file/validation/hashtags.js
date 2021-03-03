@@ -1,96 +1,97 @@
 import {displayValidationMsg} from '../../../helpers/display-validation-msg';
 
-const HASHTAGS_QUANTITY = 5;
-const HASHTAG_MAX_LENGTH = 20;
+const HASH_TAGS_QUANTITY = 5;
+const HASH_TAG_MAX_LENGTH = 20;
 
-const hashtagValidation = (hashtagInput) => {
-  hashtagInput.addEventListener('input', function () {
+const hashTagValidation = (hashTagInput) => {
+  hashTagInput.addEventListener('input', function () {
 
-    hashtagInput.value = hashtagInput.value
+    hashTagInput.value = hashTagInput.value
       .replace('  ', ' ');
 
-    const hashtags = hashtagInput.value.toLowerCase().split(' ').filter(function(item) {
+    const hashTags = hashTagInput.value.toLowerCase().split(' ').filter(function(item) {
       return item !== ''
     });
 
-    checkHashtagLength(hashtagInput, hashtags);
-    checkHashtagsQuantity(hashtagInput, hashtags);
-    checkFirstSymbol(hashtagInput, hashtags);
-    checkEmptyHashtag(hashtagInput);
-    checkSpecialChar(hashtagInput, hashtags);
-    checkIfDuplicateExists(hashtagInput, hashtags);
+    checkHashTagLength(hashTagInput, hashTags);
+    checkHashTagsQuantity(hashTagInput, hashTags);
+    checkFirstSymbol(hashTagInput, hashTags);
+    checkEmptyHashTag(hashTagInput);
+    checkSpecialChar(hashTagInput, hashTags);
+    checkIfDuplicateExists(hashTagInput, hashTags);
 
   });
 };
 
-const checkFirstSymbol = (hashtagInput, hashtags) => {
-  let isFirstSymbolHashtag = false;
-  for(let i = 0; i < hashtags.length; i++) {
-    if (hashtags[i].charAt(0) !== '#') {
-      isFirstSymbolHashtag = true;
+const checkFirstSymbol = (hashTagInput, hashTags) => {
+  let isFirstSymbolHashTag = false;
+  for(let i = 0; i < hashTags.length; i++) {
+    if (hashTags[i].charAt(0) !== '#') {
+      isFirstSymbolHashTag = true;
 
       break;
     }
   }
 
   displayValidationMsg(
-    'isFirstSymbolHashtag',
-    isFirstSymbolHashtag,
-    hashtagInput,
+    'isFirstSymbolHashTag',
+    isFirstSymbolHashTag,
+    hashTagInput,
     'Хэш-тег должен начинается с символа # (решётка).',
   );
 };
 
-const checkHashtagsQuantity = (hashtagInput, hashtags) => {
-  const isToMuchHashtags = hashtags.length > HASHTAGS_QUANTITY;
+const checkHashTagsQuantity = (hashTagInput, hashTags) => {
+  const isToMuchHashTags = hashTags.length > HASH_TAGS_QUANTITY;
   displayValidationMsg(
-    'isToMuchHashtags',
-    isToMuchHashtags,
-    hashtagInput,
+    'isToMuchHashTags',
+    isToMuchHashTags,
+    hashTagInput,
     'Максимально допустимо 5 хэш-тегов.',
   );
 };
 
-const checkHashtagLength = (hashtagInput, hashtags) => {
-  let isToMuchHashtagLength = false;
-  for(let i = 0; i < hashtags.length; i++) {
-    if(hashtags[i].length > HASHTAG_MAX_LENGTH) {
-      isToMuchHashtagLength = true;
+const checkHashTagLength = (hashTagInput, hashTags) => {
+  let isToMuchHashTagLength = false;
+  for(let i = 0; i < hashTags.length; i++) {
+    if(hashTags[i].length > HASH_TAG_MAX_LENGTH) {
+      isToMuchHashTagLength = true;
       break;
     }
   }
 
   displayValidationMsg(
-    'isToMuchHashtagLength',
-    isToMuchHashtagLength,
-    hashtagInput,
-    `Максимальна допустима длинна хэш-тега: ${HASHTAG_MAX_LENGTH} символов.`,
+    'isToMuchHashTagLength',
+    isToMuchHashTagLength,
+    hashTagInput,
+    `Максимальна допустима длинна хэш-тега: ${HASH_TAG_MAX_LENGTH} символов.`,
   );
 };
 
-const checkEmptyHashtag = (hashtagInput) => {
-  let isEmptyHashtag = false;
-  const lastHashtagInputSymbol = hashtagInput.value[hashtagInput.value.length - 1];
+const checkEmptyHashTag = (hashTagInput) => {
+  let isEmptyHashTag = false;
+  const lastHashTagInputSymbol = hashTagInput.value[hashTagInput.value.length - 1];
+  const secondLastHashTagInputSymbol = hashTagInput.value[hashTagInput.value.length - 2];
 
-  if (hashtagInput.value.includes('# ') || lastHashtagInputSymbol === '#' && hashtagInput.value.length > 1) {
-    isEmptyHashtag = true;
+  if (hashTagInput.value === '#' || hashTagInput.value.includes('# ') || (lastHashTagInputSymbol === '#' && secondLastHashTagInputSymbol === ' ')) {
+    isEmptyHashTag = true;
   }
 
   displayValidationMsg(
-    'checkEmptyHashtag',
-    isEmptyHashtag,
-    hashtagInput,
+    'checkEmptyHashTag',
+    isEmptyHashTag,
+    hashTagInput,
     'Хеш-тег не может состоять только из одной решётки.',
   );
 };
 
-const checkSpecialChar = (hashtagInput, hashtags) => {
+const checkSpecialChar = (hashTagInput, hashTags) => {
 
   let hasSpecialChar = false;
-  for(let i = 0; i < hashtags.length; i++) {
+  for(let i = 0; i < hashTags.length; i++) {
 
-    for(let j = 1; j < hashtags[i].length; j++) {
-      if (!/^[0-9A-Za-z]+$/.test(hashtags[i][j])) {
+    for(let j = 1; j < hashTags[i].length; j++) {
+      if (!/^[0-9A-Za-z]+$/.test(hashTags[i][j])) {
         hasSpecialChar = true;
         break;
       }
@@ -100,20 +101,20 @@ const checkSpecialChar = (hashtagInput, hashtags) => {
   displayValidationMsg(
     'hasSpecialChar',
     hasSpecialChar,
-    hashtagInput,
+    hashTagInput,
     'Строка после решётки должна состоять из букв или чисел и не может содержать спецсимволы (#, @, $ и т. п.).',
   );
 };
 
-const checkIfDuplicateExists = (hashtagInput, hashtags) => {
-  const duplicateInclude = new Set(hashtags).size !== hashtags.length;
+const checkIfDuplicateExists = (hashTagInput, hashTags) => {
+  const duplicateInclude = new Set(hashTags).size !== hashTags.length;
 
   displayValidationMsg(
     'checkIfDuplicate',
     duplicateInclude,
-    hashtagInput,
+    hashTagInput,
     'Один и тот же хэш-тег не может быть использован дважды.',
   );
 };
 
-export {hashtagValidation};
+export {hashTagValidation};

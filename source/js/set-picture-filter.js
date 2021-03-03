@@ -1,12 +1,12 @@
 import _ from 'lodash';
-import {renderPictures} from './picture-template.js';
+import {renderPictures} from './render-template.js';
 import {getArrayWithUniqueNumbers} from './helpers/util.js';
 
 const SORT_BY_RANDOM_PICTURES_QUANTITY = 10;
 const THROTTLE_TIME = 500;
 const FILTER_BUTTON_ACTIVE_CLASS = 'img-filters__button--active';
 
-const pictureFilter = (pictures) => {
+const setPictureFilter = (pictures) => {
   const imgFilters = document.querySelector('.img-filters');
   imgFilters.classList.remove('img-filters--inactive');
 
@@ -53,12 +53,13 @@ const pictureFilter = (pictures) => {
     filterDiscussed.classList.add(FILTER_BUTTON_ACTIVE_CLASS);
   };
 
-  // eslint-disable-next-line no-undef
+  const sortByDefaultThrottle = _.throttle(sortByDefault, THROTTLE_TIME);
   const sortByRandomThrottle = _.throttle(sortByRandom, THROTTLE_TIME);
+  const sortByDiscussedThrottle = _.throttle(sortByDiscussed, THROTTLE_TIME);
 
-  filterDefault.addEventListener('click', sortByDefault);
+  filterDefault.addEventListener('click', sortByDefaultThrottle);
   filterRandom.addEventListener('click', sortByRandomThrottle);
-  filterDiscussed.addEventListener('click', sortByDiscussed);
+  filterDiscussed.addEventListener('click', sortByDiscussedThrottle);
 
   const clearPictures = () => {
     const allPicturesList = document.querySelectorAll('.picture');
@@ -76,4 +77,4 @@ const pictureFilter = (pictures) => {
 
 };
 
-export {pictureFilter}
+export {setPictureFilter}

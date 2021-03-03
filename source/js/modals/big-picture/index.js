@@ -26,11 +26,6 @@ const renderBigPicture = (data) => {
   const openBigPictureModal = () => {
     openModal(bigPicture);
 
-    // temporary code
-    const bigPictureCommentCount = bigPicture.querySelector('.social__comment-count');
-    bigPictureCommentCount.classList.add('hidden');
-    //
-
     closeBigPictureModalButton.addEventListener('click', closeBigPictureModal);
     document.addEventListener('keydown', closeBigPictureModalByEscape);
   };
