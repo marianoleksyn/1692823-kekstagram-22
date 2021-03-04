@@ -1,4 +1,5 @@
 import {HIDDEN_CLASS} from '../../constants.js';
+import {setCommentCount} from './set-comment-counter.js';
 
 const COMMENTS_DISPLAY = 5;
 
@@ -26,6 +27,7 @@ const setBigPictureComments = (bigPicture, data) => {
 
   const commentLoaderListener = () => {
     renderPartComment(restComments);
+    setCommentCount(commentsContainer);
   };
 
   const renderPartComment = (comments) => {
@@ -49,6 +51,8 @@ const setBigPictureComments = (bigPicture, data) => {
   };
 
   renderPartComment(commentsCopy);
+  setCommentCount(commentsContainer);
+
 };
 
 export {setBigPictureComments};

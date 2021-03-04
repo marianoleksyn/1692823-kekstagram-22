@@ -1,6 +1,8 @@
-import {HIDDEN_CLASS} from '../../constants.js'
+import noUiSlider from 'nouislider';
+import 'nouislider/distribute/nouislider.css';
+import {HIDDEN_CLASS} from '../../constants.js';
 
-const pictureFilter = (imgPreview) => {
+const setPictureEffect = (imgPreview) => {
 
   const EFFECT_NONE = 'effect-none';
   const EFFECT_CHROME = 'effect-chrome';
@@ -14,9 +16,7 @@ const pictureFilter = (imgPreview) => {
   const slider = sliderWrapper.querySelector('.effect-level__slider');
   const effectLevelValue = document.querySelector('.effect-level__value');
 
-  // Init noUiSlider
   if (slider.innerHTML === '') {
-    // eslint-disable-next-line no-undef
     noUiSlider.create(slider, {range: {min: 0, max: 1}, start: 0});
   }
 
@@ -36,7 +36,6 @@ const pictureFilter = (imgPreview) => {
     slider.noUiSlider.on('update', (_, handle, unencoded) => {
       effectLevelValue.setAttribute('value', unencoded[handle]);
 
-      // Update styles for preview
       switch (effectType) {
         case EFFECT_CHROME:
           imgPreview.style.filter = `grayscale(${unencoded[handle]})`;
@@ -71,23 +70,23 @@ const pictureFilter = (imgPreview) => {
             break;
 
           case EFFECT_CHROME:
-            configureEffectSliderSettings(EFFECT_CHROME, 0, 1, 0.5, 0.1);
+            configureEffectSliderSettings(EFFECT_CHROME, 0, 1, 1, 0.1);
             break;
 
           case EFFECT_SEPIA:
-            configureEffectSliderSettings(EFFECT_SEPIA, 0, 1, 0.5, 0.1);
+            configureEffectSliderSettings(EFFECT_SEPIA, 0, 1, 1, 0.1);
             break;
 
           case EFFECT_MARVIN:
-            configureEffectSliderSettings(EFFECT_MARVIN, 0, 100, 30, 1);
+            configureEffectSliderSettings(EFFECT_MARVIN, 0, 100, 100, 1);
             break;
 
           case EFFECT_PHOBOS:
-            configureEffectSliderSettings(EFFECT_PHOBOS, 0, 3, 1.5, 0.1);
+            configureEffectSliderSettings(EFFECT_PHOBOS, 0, 3, 3, 0.1);
             break;
 
           case EFFECT_HEAT:
-            configureEffectSliderSettings(EFFECT_HEAT, 1, 3, 1.5, 0.1);
+            configureEffectSliderSettings(EFFECT_HEAT, 1, 3, 3, 0.1);
             break;
         }
       }
@@ -104,4 +103,4 @@ const pictureFilter = (imgPreview) => {
 
 };
 
-export {pictureFilter};
+export {setPictureEffect};

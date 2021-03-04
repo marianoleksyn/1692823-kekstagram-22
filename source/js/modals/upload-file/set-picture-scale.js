@@ -1,4 +1,4 @@
-const pictureScale = (imagePreview) => {
+const setPictureScale = (imagePreview) => {
 
   const scaleEnlargeButton = document.querySelector('.scale__control--bigger');
   const scaleReduceButton = document.querySelector('.scale__control--smaller');
@@ -37,4 +37,4 @@ const pictureScale = (imagePreview) => {
 
 };
 
-export {pictureScale};
+export {setPictureScale};
