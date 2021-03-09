@@ -1,17 +1,19 @@
 const setPictureScale = (imagePreview) => {
 
+  const MAX_SCALE_VALUE = 100;
+  const STEP_SCALE_VALUE = 25;
   const scaleEnlargeButton = document.querySelector('.scale__control--bigger');
   const scaleReduceButton = document.querySelector('.scale__control--smaller');
   const scaleInputValue = document.querySelector('.scale__control--value');
 
   imagePreview.style.transform = '';
 
-  let scaleValue = 100;
+  let scaleValue = MAX_SCALE_VALUE;
   scaleInputValue.value = scaleValue + '%';
 
   scaleEnlargeButton.addEventListener('click', function () {
-    if (scaleValue !== 100) {
-      scaleValue += 25;
+    if (scaleValue !== MAX_SCALE_VALUE) {
+      scaleValue += STEP_SCALE_VALUE;
 
       scaleInputValue.value = scaleValue + '%';
       changeImgPreviewScale(scaleValue);
@@ -19,8 +21,8 @@ const setPictureScale = (imagePreview) => {
   });
 
   scaleReduceButton.addEventListener('click', function () {
-    if (scaleValue !== 25) {
-      scaleValue -= 25;
+    if (scaleValue !== STEP_SCALE_VALUE) {
+      scaleValue -= STEP_SCALE_VALUE;
 
       scaleInputValue.value = scaleValue + '%';
       changeImgPreviewScale(scaleValue);
@@ -28,7 +30,7 @@ const setPictureScale = (imagePreview) => {
   });
 
   const changeImgPreviewScale = (scaleValue) => {
-    if (scaleValue === 100) {
+    if (scaleValue === MAX_SCALE_VALUE) {
       imagePreview.style.transform = 'scale(1)';
     } else {
       imagePreview.style.transform = `scale(0.${scaleValue})`;
